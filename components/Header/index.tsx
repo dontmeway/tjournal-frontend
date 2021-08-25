@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Paper, Button, IconButton, Avatar } from '@material-ui/core';
 import {
   SearchOutlined as SearchIcon,
-  CreateOutlined as PenIcon,
   SmsOutlined as MessageIcon,
   Menu as MenuIcon,
   ExpandMoreOutlined as ArrowBottom,
@@ -30,9 +29,13 @@ export const Header: React.FC = () => {
           <input placeholder="Поиск" />
         </div>
 
-        <Button variant="contained" className={styles.penButton}>
-          Новая запись
-        </Button>
+        <Link href="/write">
+          <a>
+            <Button variant="contained" className={styles.penButton}>
+              Новая запись
+            </Button>
+          </a>
+        </Link>
       </div>
       <div className="d-flex align-center">
         <IconButton>
