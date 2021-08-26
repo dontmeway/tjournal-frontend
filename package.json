@@ -8,6 +8,15 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "bracketSpacing": true
+  },
   "dependencies": {
     "@editorjs/editorjs": "^2.22.2",
     "@material-ui/core": "^4.12.3",
