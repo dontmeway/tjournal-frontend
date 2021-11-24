@@ -1,55 +1,69 @@
 .content {
-  width: 70%;
-  margin: 30px auto;
+    width: 70%;
+    margin: 30px auto;
 
-  button {
-    position: relative;
+    button {
+        position: relative;
 
-    svg {
-      position: absolute;
-      left: 10px;
-      width: 24px;
-      height: 24px;
+        svg {
+            width: 24px;
+            position: absolute;
+            left: 15px;
+            height: 24px;
+        }
     }
-  }
 }
 
 .title {
-  font-size: 18px;
-  color: black !important;
-  margin-bottom: 25px !important;
-  font-weight: 500 !important;
+    font-size: 18px !important;
+    margin-bottom: 15px !important;
+    color: black !important;
+    font-weight: 500 !important;
 }
 
-.miniButtons {
-  display: flex;
-  justify-content: space-between;
+.iconButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  button {
-    height: 40px !important;
+    button {
+        height: 40px;
 
-    &:nth-of-type(2) {
-      margin: 0 15px;
+        svg {
+            position: static;
+        }
+    }
+}
+
+.input {
+
+
+
+    &:after,
+    &:before {
+        display: none !important;
+    }
+
+    background-color: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 6px 12px;
+    color: #595959;
+}
+
+.goBack {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        color: #4683d9;
     }
 
     svg {
-      position: static;
+        margin-right: 5px;
+        position: relative;
+        top: -1px;
     }
-  }
-}
-
-.backTitle {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  &:hover {
-    color: #4683d9;
-  }
-
-  svg {
-    margin-right: 10px;
-    position: relative;
-    top: -1px;
-  }
 }

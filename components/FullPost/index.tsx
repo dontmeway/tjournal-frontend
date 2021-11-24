@@ -1,10 +1,10 @@
 import { Button, Paper, Typography } from '@material-ui/core';
 import React from 'react';
-import { PostActions } from '../PostActions';
 import MessageIcon from '@material-ui/icons/TextsmsOutlined';
 import UserAddIcon from '@material-ui/icons/PersonAddOutlined';
 
 import styles from './FullPost.module.scss';
+import { PostActions } from '../PostActions';
 
 export const FullPost = () => {
   return (
@@ -31,7 +31,7 @@ export const FullPost = () => {
             «Аэрофлота», выполняющий рейс SU6416. На момент написания заметки он уже пересек
             Тамбовскую область и подлетает к Москве.
           </Typography>
-          <div style={{ width: 250, marginLeft: -14 }}>
+          <div style={{ width: 250 }}>
             <PostActions />
           </div>
           <div className="d-flex justify-between align-center mt-30 mb-30">

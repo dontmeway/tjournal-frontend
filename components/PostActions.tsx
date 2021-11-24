@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { IconButton } from '@material-ui/core';
 import {
   ModeCommentOutlined as CommentsIcon,

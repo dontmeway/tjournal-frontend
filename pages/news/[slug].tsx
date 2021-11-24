@@ -1,15 +1,12 @@
-import { MainLayout } from '../../layouts/MainLayout';
-import { FullPost } from '../../components/FullPost';
-import React from 'react';
-import {PostComments} from "../../components/PostComments";
-
-
+import { FullPost } from '../../components/FullPost'
+import { PostComments } from '../../components/PostComments'
+import { MainLayout } from '../../layouts/MainLayout'
 
 export default function Post() {
-  return (
-    <MainLayout className="mb-50" contentFullWidth>
-      <FullPost />
-      <PostComments />
-    </MainLayout>
-  );
+    return (
+        <MainLayout contentFullWidth className="mb-40">
+            <FullPost />
+            <PostComments />
+        </MainLayout>
+    )
 }

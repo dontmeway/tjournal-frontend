@@ -1,18 +1,18 @@
-.titleField {
-  width: 100%;
-  margin-bottom: 10px;
+.root {
+    width: 100%;
+    margin-bottom: 10px;
 
-  &:before, &:after {
-    display: none !important;
-  }
+    &:after,
+    &:before {
+        display: none;
+    }
 
-  input {
-    font-size: 36px !important;
-    font-weight: 700 !important;
-  }
+    input {
+        font-weight: 600;
+        font-size: 28px;
+    }
 }
 
 .editor {
-  font-size: 18px;
-  height: calc(100vh - 220px);
+    height: calc(100vh - 250px)
 }

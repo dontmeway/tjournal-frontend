@@ -1,22 +1,14 @@
-import React from 'react';
-import EditorJS from '@editorjs/editorjs';
+import EditorJS from "@editorjs/editorjs"
+import { useEffect } from "react"
 
 export const Editor: React.FC = () => {
-    React.useEffect(() => {
-        const editor = new EditorJS({
-            holder: 'editor',
-            placeholder: 'Введите текст вашей статьи'
-        });
-
-        return () => {
-            editor.isReady.then(() => {
-                editor.destroy();
-            })
-            .catch(e => console.error('ERROR editor cleanup', e));
-        }
-    }, []);
-
+    useEffect(() => {
+        const Editor = new EditorJS({
+            holder: "editor",
+            placeholder: "Введите текст статьи"
+        })
+    }, [])
     return (
         <div id="editor" />
-    );
-};
+    )
+}

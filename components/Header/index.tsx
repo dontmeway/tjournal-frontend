@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Paper, Button, IconButton, Avatar } from '@material-ui/core';
 import {
@@ -7,25 +7,23 @@ import {
   Menu as MenuIcon,
   ExpandMoreOutlined as ArrowBottom,
   NotificationsNoneOutlined as NotificationIcon,
-  AccountCircleOutlined as UserIcon,
 } from '@material-ui/icons';
-
+import PersonIcon from '@material-ui/icons/PermIdentity';
 import styles from './Header.module.scss';
 import { AuthDialog } from '../AuthDialog';
-import { useAppSelector } from '../../redux/hooks';
-import { selectUserData } from '../../redux/slices/user';
+
 
 export const Header: React.FC = () => {
-  const userData = useAppSelector(selectUserData);
-  const [authVisible, setAuthVisible] = React.useState(false);
-
-  const openAuthDialog = () => {
+  const [authVisible, setAuthVisible] = useState(false);
+  const [isAuth, setAuth] = useState(false)
+  const handleClickOpen = () => {
     setAuthVisible(true);
   };
 
-  const closeAuthDialog = () => {
+  const handleClose = () => {
     setAuthVisible(false);
   };
+
 
   return (
     <Paper classes={{ root: styles.root }} elevation={0}>
@@ -53,31 +51,36 @@ export const Header: React.FC = () => {
         </Link>
       </div>
       <div className="d-flex align-center">
-        <IconButton>
-          <MessageIcon />
-        </IconButton>
-        <IconButton>
-          <NotificationIcon />
-        </IconButton>
-        {userData ? (
-          <Link href="/profile/1">
-            <a className="d-flex align-center">
-              <Avatar
-                className={styles.avatar}
-                alt="Remy Sharp"
-                src="https://leonardo.osnova.io/5ffeac9a-a0e5-5be6-98af-659bfaabd2a6/-/scale_crop/108x108/-/format/webp/"
-              />
-              <ArrowBottom />
-            </a>
-          </Link>
-        ) : (
-          <div className={styles.loginButton} onClick={openAuthDialog}>
-            <UserIcon />
-            Войти
-          </div>
-        )}
+        {isAuth ?
+          <>
+            <IconButton>
+              <MessageIcon />
+            </IconButton>
+            <IconButton>
+              <NotificationIcon />
+            </IconButton>
+            <Link href="/profile/1">
+              <a className="d-flex align-center">
+                <Avatar
+                  className={styles.avatar}
+                  alt="Remy Sharp"
+                  src="https://leonardo.osnova.io/5ffeac9a-a0e5-5be6-98af-659bfaabd2a6/-/scale_crop/108x108/-/format/webp/"
+                />
+                <ArrowBottom />
+              </a>
+            </Link>
+          </> :
+          <>
+            <IconButton>
+              <NotificationIcon />
+            </IconButton>
+            <Button onClick={handleClickOpen}>
+              <PersonIcon />
+              Войти
+            </Button>
+          </>}
       </div>
-      <AuthDialog onClose={closeAuthDialog} visible={authVisible} />
+      <AuthDialog open={authVisible} onClose={handleClose} />
     </Paper>
   );
 };

@@ -1,21 +1,25 @@
-import React from 'react';
-import {Divider, Paper, Tab, Tabs, Typography} from "@material-ui/core";
-import {Comment} from "../Comment";
-import {AddCommentForm} from "../AddCommentForm";
-import data from '../../data';
+import { Divider, Paper, Tab, Tabs, Typography } from '@material-ui/core'
+import React, { useState } from 'react'
+import { AddCommentForm } from '../AddCommentForm'
+import { Comment } from '../Comment'
+import data from "../../data"
+
 
 
 export const PostComments: React.FC = () => {
-    const [activeTab, setActiveTab] = React.useState(0);
-    const comments = data.comments[activeTab === 0 ? 'popular' : 'new'];
-
+    const [activeTab, setActiveTab] = useState<0 | 1>(0)
+    const comments = data.comments[activeTab ? "new" : "popular"]
     return (
         <Paper elevation={0} className="mt-40 p-30">
             <div className="container">
-                <Typography variant="h6" className="mb-20">
-                    42 комментария
+                <Typography className="mb-20" variant="h6">
+                    476 комментариев
                 </Typography>
-                <Tabs onChange={(_, newValue) => setActiveTab(newValue)} className="mt-20" value={activeTab} indicatorColor="primary" textColor="primary">
+                <Tabs
+                    onChange={(_, newValue) => setActiveTab(newValue)}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    value={activeTab}>
                     <Tab label="Популярные" />
                     <Tab label="По порядку" />
                 </Tabs>
@@ -23,9 +27,11 @@ export const PostComments: React.FC = () => {
                 <AddCommentForm />
                 <div className="mb-20" />
                 {
-                    comments.map(obj => <Comment key={obj.id} user={obj.user} text={obj.text} createdAt={obj.createdAt} />)
+                    comments.map(obj => (
+                        <Comment {...obj} />
+                    ))
                 }
             </div>
         </Paper>
-    );
-};
+    )
+}

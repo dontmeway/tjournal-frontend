@@ -1,27 +1,37 @@
-import React from 'react';
-import Input from '@material-ui/core/Input';
-import styles from './AddCommentForm.module.scss';
-import {Button} from "@material-ui/core";
-
-interface AddCommentFormProps {
-
-}
-
-export const AddCommentForm: React.FC<AddCommentFormProps> = () => {
-    const [clicked, setClicked] = React.useState(false);
-    const [text, setText] = React.useState('');
+import { Button, Input } from "@material-ui/core"
+import { useState } from "react"
+import styles from "./AddCommentForm.module.scss"
+export const AddCommentForm = () => {
+    const [isFocused, setFocused] = useState(false)
+    const [comment, setComment] = useState("")
 
     const onAddComment = () => {
-        setClicked(false);
-        setText('');
+        setFocused(false)
+        setComment("")
     }
 
+
     return (
-        <div className={styles.form}>
-            <Input onChange={e => setText(e.target.value)} value={text} onFocus={() => setClicked(true)} minRows={clicked ? 5 : 1} classes={{ root: styles.fieldRoot }} placeholder="Написать комментарий..." fullWidth multiline />
-            {clicked && <Button onClick={onAddComment} className={styles.addButton} variant="contained" color="primary">
-                Опубликовать
-            </Button>}
+        <div className={styles.wrapper}>
+            <Input
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                onFocus={() => setFocused(true)}
+                minRows={isFocused ? 5 : 1}
+                multiline
+                placeholder="Написать комментарий..."
+                classes={{ root: styles.fieldRoot }}
+                fullWidth />
+            {isFocused &&
+                <Button
+                    onClick={onAddComment}
+                    disabled={!Boolean(comment)}
+                    classes={{ root: styles.sendBtn }}
+                    style={{ height: 42 }}
+                    variant="contained"
+                    color="primary">
+                    Отправить
+                </Button>}
         </div>
-    );
-};
+    )
+}
