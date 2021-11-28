@@ -11,11 +11,15 @@ import {
 import PersonIcon from '@material-ui/icons/PermIdentity';
 import styles from './Header.module.scss';
 import { AuthDialog } from '../AuthDialog';
+import { useAppSelector } from '../../redux/hooks';
+import { selectUserData } from '../../redux/slices/userSlice';
 
 
 export const Header: React.FC = () => {
+  const userData = useAppSelector(selectUserData)
+
   const [authVisible, setAuthVisible] = useState(false);
-  const [isAuth, setAuth] = useState(false)
+
   const handleClickOpen = () => {
     setAuthVisible(true);
   };
@@ -51,7 +55,7 @@ export const Header: React.FC = () => {
         </Link>
       </div>
       <div className="d-flex align-center">
-        {isAuth ?
+        {userData ?
           <>
             <IconButton>
               <MessageIcon />
@@ -63,7 +67,7 @@ export const Header: React.FC = () => {
               <a className="d-flex align-center">
                 <Avatar
                   className={styles.avatar}
-                  alt="Remy Sharp"
+                  alt={userData.fullName}
                   src="https://leonardo.osnova.io/5ffeac9a-a0e5-5be6-98af-659bfaabd2a6/-/scale_crop/108x108/-/format/webp/"
                 />
                 <ArrowBottom />

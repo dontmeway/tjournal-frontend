@@ -39,17 +39,20 @@
 
 
 
-    &:after,
-    &:before {
-        display: none !important;
-    }
+    input {
 
-    background-color: #f5f5f5;
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    border-radius: 8px;
-    font-size: 16px;
-    padding: 6px 12px;
-    color: #595959;
+        &:after,
+        &:before {
+            display: none !important;
+        }
+
+        background-color: #f5f5f5;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        border-radius: 8px;
+        font-size: 16px;
+        padding: 6px 12px;
+        color: #595959;
+    }
 }
 
 .goBack {
@@ -66,4 +69,14 @@
         position: relative;
         top: -1px;
     }
+}
+
+.registerButton {
+    outline: none;
+    border: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: blue;
+    background: transparent;
 }
